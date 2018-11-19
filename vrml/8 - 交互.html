@@ -1,0 +1,181 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- common.css -->
+      <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: -apple-system, Helvetica, Arial, sans-serif;margin: 0;padding: 20px;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;height: auto;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 90%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+      <!-- ace-static.css -->
+      <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+      <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+      <!-- export.css -->
+      <style>
+        body{margin:0 auto;max-width:800px;line-height:1.4}
+        #nav{margin:5px 0 10px;font-size:15px}
+        #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+        #contentarea{font-size:15px;margin:16px 0}
+        .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+        .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+        .latex-cell{white-space:pre-wrap;}
+      </style>
+      <!-- User CSS -->
+      <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+    </head>
+    <body>
+      <div id="nav"><div>Next: <a href='9 - 综合例题.html'>9 - 综合例题</a>, Previous: <a href='7 - 动画.html'>7 - 动画</a>, Up: <a href='index.html'>Index</a></div></div>
+      <div id="titlearea">
+        <h2>8 - 交互</h2>
+      </div>
+      <div id="contentarea"><div class="cell text-cell"><h2>用于交互的七种传感器</h2><div><div>这七种传感器按照感知方式分为两类（每一大类中的第一个是重点）：</div><div><ul><li>鼠标操作：TouchSensor, PlaneSensor, CylinderSensor, SphereSensor<br></li><li>视点位置：ProximitySensor, VisibilitySensor, Collision<br></li></ul><div>TouchSensor 和 PlaneSensor 是重点<br></div></div></div></div><div class="cell text-cell"><h3>TouchSensor</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>TouchSensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enabled    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isOver    # <span class="ace_cjk" style="width:NaNpx">悬</span><span class="ace_cjk" style="width:NaNpx">停</span> TRUE<span class="ace_cjk" style="width:NaNpx">，</span><span class="ace_cjk" style="width:NaNpx">离</span><span class="ace_cjk" style="width:NaNpx">开</span> FALSE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isActive    # <span class="ace_cjk" style="width:NaNpx">按</span><span class="ace_cjk" style="width:NaNpx">下</span> TRUE<span class="ace_cjk" style="width:NaNpx">，</span><span class="ace_cjk" style="width:NaNpx">抬</span><span class="ace_cjk" style="width:NaNpx">起</span> FALSE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    touchTime    # <span class="ace_cjk" style="width:NaNpx">【</span><span class="ace_cjk" style="width:NaNpx">重</span><span class="ace_cjk" style="width:NaNpx">要</span><span class="ace_cjk" style="width:NaNpx">】</span>isOver &amp;&amp; isActive <span class="ace_cjk" style="width:NaNpx">时</span><span class="ace_cjk" style="width:NaNpx">输</span><span class="ace_cjk" style="width:NaNpx">出</span><span class="ace_cjk" style="width:NaNpx">，</span><span class="ace_cjk" style="width:NaNpx">鼠</span><span class="ace_cjk" style="width:NaNpx">标</span><span class="ace_cjk" style="width:NaNpx">单</span><span class="ace_cjk" style="width:NaNpx">击</span><span class="ace_cjk" style="width:NaNpx">就</span><span class="ace_cjk" style="width:NaNpx">输</span><span class="ace_cjk" style="width:NaNpx">出</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    hitPoint_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    hitNormal_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    hitTexCoord_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell"><div>touchTime：当 isOver=TRUE, isActive=TRUE时，引发该事件，所发送的值是当前时间。经常用此事件来控制当用户点击鼠标左键放开后触发的动作。</div><div><br></div><div>【例】利用 TouchSensor 触摸传感器节点，对圆锥位移动画进行控制。当光标移动到圆锥造型上时，会出现一个小手图标，表示这是一个被感应被控制的造型。此时，按下鼠标左键不放，圆锥动画开始，直到鼠标松开为止。</div></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span># VRML V2.0 utf8
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF tt Transform {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    children [
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    Shape {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    geometry Box {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    size 1 1 1
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    appearance Appearance {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    material Material {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    diffuseColor 1 1 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    ]
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF time TimeSensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    # <span class="ace_cjk" style="width:NaNpx">这</span><span class="ace_cjk" style="width:NaNpx">里</span><span class="ace_cjk" style="width:NaNpx">不</span><span class="ace_cjk" style="width:NaNpx">能</span><span class="ace_cjk" style="width:NaNpx">写</span> loop TRUE<span class="ace_cjk" style="width:NaNpx">，</span><span class="ace_cjk" style="width:NaNpx">因</span><span class="ace_cjk" style="width:NaNpx">为</span> loop <span class="ace_cjk" style="width:NaNpx">现</span><span class="ace_cjk" style="width:NaNpx">在</span><span class="ace_cjk" style="width:NaNpx">被</span> TouchSensor <span class="ace_cjk" style="width:NaNpx">控</span><span class="ace_cjk" style="width:NaNpx">制</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    cycleInterval 3
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF oo OrientationInterpolator {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    key [0 0.5 1]
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    keyValue [
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    0 1 0 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    0 1 0 3.14    # <span class="ace_cjk" style="width:NaNpx">转</span><span class="ace_cjk" style="width:NaNpx">半</span><span class="ace_cjk" style="width:NaNpx">圈</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    0 1 0 6.28    # <span class="ace_cjk" style="width:NaNpx">转</span><span class="ace_cjk" style="width:NaNpx">一</span><span class="ace_cjk" style="width:NaNpx">圈</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    ]
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE time.fraction_changed TO oo.set_fraction
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE oo.value_changed TO tt.rotation
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span># <span class="ace_cjk" style="width:NaNpx">一</span><span class="ace_cjk" style="width:NaNpx">般</span> TouchSensor <span class="ace_cjk" style="width:NaNpx">就</span><span class="ace_cjk" style="width:NaNpx">这</span><span class="ace_cjk" style="width:NaNpx">么</span><span class="ace_cjk" style="width:NaNpx">写</span><span class="ace_cjk" style="width:NaNpx">，</span><span class="ace_cjk" style="width:NaNpx">里</span><span class="ace_cjk" style="width:NaNpx">面</span><span class="ace_cjk" style="width:NaNpx">什</span><span class="ace_cjk" style="width:NaNpx">么</span><span class="ace_cjk" style="width:NaNpx">也</span><span class="ace_cjk" style="width:NaNpx">不</span><span class="ace_cjk" style="width:NaNpx">写</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF touch TouchSensor {}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span># 1<span class="ace_cjk" style="width:NaNpx">题</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE touch.isActive TO time.loop
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span># 2<span class="ace_cjk" style="width:NaNpx">题</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE touch.touchTime TO time.startTime
+</div></div></div></div><div class="cell text-cell">注意：鼠标松开之后，动画不会立即停止，而是会播放完当前周期后才停止。</div><div class="cell markdown-cell"><p>下面的 Sensor：</p>
+<p>Sensor(1) -&gt; TimeSensor - Interpolator -&gt; Shape<br>
+Sensor(2) -&gt; Shape</p>
+</div><div class="cell text-cell"><h3>PlaneSensor 平面传感器</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>PlaneSensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enabled    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    offset    0 0 0 
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    autoOffset    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    minPosition    0 0 
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    maxPosition    -1    -1
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isActive
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    trackPoint_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    translation_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell"></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>#VRML V2.0 utf8
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF tt Transform {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    rotation 1 0 0 3.14
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    children [
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    Shape {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    geometry Cone {}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    appearance Appearance {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    material Material {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    diffuseColor 1 0 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span><span class="ace_indent-guide">    </span>    }
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    ]
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span># - 1 - <span class="ace_cjk" style="width:NaNpx">不</span><span class="ace_cjk" style="width:NaNpx">限</span><span class="ace_cjk" style="width:NaNpx">制</span><span class="ace_cjk" style="width:NaNpx">移</span><span class="ace_cjk" style="width:NaNpx">动</span><span class="ace_cjk" style="width:NaNpx">范</span><span class="ace_cjk" style="width:NaNpx">围</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF pl PlaneSensor {}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE pl.trackPoint_changed TO tt.translation    # <span class="ace_cjk" style="width:NaNpx">两</span><span class="ace_cjk" style="width:NaNpx">个</span><span class="ace_cjk" style="width:NaNpx">目</span><span class="ace_cjk" style="width:NaNpx">前</span><span class="ace_cjk" style="width:NaNpx">无</span><span class="ace_cjk" style="width:NaNpx">区</span><span class="ace_cjk" style="width:NaNpx">别</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE pl.translation_changed TO tt.translation
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span># - 2 - <span class="ace_cjk" style="width:NaNpx">限</span><span class="ace_cjk" style="width:NaNpx">制</span><span class="ace_cjk" style="width:NaNpx">移</span><span class="ace_cjk" style="width:NaNpx">动</span><span class="ace_cjk" style="width:NaNpx">范</span><span class="ace_cjk" style="width:NaNpx">围</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>DEF pl PlaneSensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    offset 2 2 0    # <span class="ace_cjk" style="width:NaNpx">点</span><span class="ace_cjk" style="width:NaNpx">击</span><span class="ace_cjk" style="width:NaNpx">鼠</span><span class="ace_cjk" style="width:NaNpx">标</span><span class="ace_cjk" style="width:NaNpx">后</span><span class="ace_cjk" style="width:NaNpx">先</span><span class="ace_cjk" style="width:NaNpx">立</span><span class="ace_cjk" style="width:NaNpx">刻</span><span class="ace_cjk" style="width:NaNpx">跳</span><span class="ace_cjk" style="width:NaNpx">到</span> 2 2 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    maxPosition 3 4    # <span class="ace_cjk" style="width:NaNpx">限</span><span class="ace_cjk" style="width:NaNpx">制</span><span class="ace_cjk" style="width:NaNpx">区</span><span class="ace_cjk" style="width:NaNpx">域</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE pl.trackPoint_changed TO tt.translation    # <span class="ace_cjk" style="width:NaNpx">不</span><span class="ace_cjk" style="width:NaNpx">受</span><span class="ace_cjk" style="width:NaNpx">限</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ROUTE pl.translation_changed TO tt.translation    # <span class="ace_cjk" style="width:NaNpx">受</span><span class="ace_cjk" style="width:NaNpx">限</span>
+</div></div></div></div><div class="cell text-cell"><h3>CylinderSensor 圆柱体传感器</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>CylinderSensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enabled    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    offset    0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    autoOffset    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    minAngle    0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    maxAngle    -1
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    diskAngle    0.262    # <span class="ace_cjk" style="width:NaNpx">不</span><span class="ace_cjk" style="width:NaNpx">用</span>
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isActive
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    trackPoint_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    rotation_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell">例 4-37 旋转门：两个 box 交叉 透明度模拟玻璃门</div><div class="cell text-cell"><h3>SphereSensor 球体传感器</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>SphereSensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enabled    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    offset    0 1 0 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    autoOffset    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isActive    
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    trackPoint_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    rotaiton_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell"><h3>ProximitySensor 接近传感器</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>ProximitySensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enabled    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    center    0 0 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    size    0 0 0 
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isActive    
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    position_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    orientation_changed
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enterTime
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    exitTime
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell"><h3>VisibilitySensor 可视传感器</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>VisibilitySensor {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enabled    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    center    0 0 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    size    0 0 0 
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    isActive
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    enterTime
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    exitTime
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell"><h3>Collision 碰撞传感器</h3></div><div class="cell code-cell"><div class="ace-chrome"><div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0"><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>Collision {
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    children    []
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    collide    TRUE
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    proxy    NULL
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    bboxCenter    0 0 0
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    bboxSize    -1 -1 -1
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    collideTime
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    addChildren
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>    removeChildren
+</div><div class="ace_line"><span class="ace_gutter ace_gutter-cell" unselectable="on"></span>}
+</div></div></div></div><div class="cell text-cell"></div></div>
+      <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 39) window.location.href = '9 - 综合例题.html';
+if (e.keyCode === 37) window.location.href = '7 - 动画.html';
+}</script>
+    </body>
+    </html>
+  
